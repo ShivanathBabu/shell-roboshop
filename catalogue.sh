@@ -30,7 +30,7 @@ validate()
 
 }
 
-dnf module disable nodejs  &>>$LOG_FILE
+dnf module disable nodejs -y  &>>$LOG_FILE
 validate $? "disabling nodejs"
 
 dnf module enable nodejs:20 -y &>>$LOG_FILE
@@ -38,6 +38,14 @@ validate $? "enabling nodejs:20"
 
 dnf install nodejs -y &>>$LOG_FILE
 validate $? "installing nodejs"
+
+id roboshop
+if [ $? -ne 0]
+then 
+   useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$LOG_FILE
+   else
+   echo -e "system user already created...$Y skipping $N"
+   fi
 
 mkdir -p /app 
 validate $? "creating directory"
