@@ -43,7 +43,7 @@ rm -rf /usr/share/nginx/html/* &>>$LOG_FILE
 validate $? "Removing default content"
 
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip &>>$LOG_FILE
-VALIDATE $? "Downloading frontend"
+validate $? "Downloading frontend"
 
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip 
