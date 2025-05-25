@@ -40,9 +40,10 @@ dnf install nodejs -y &>>$LOG_FILE
 validate $? "installing nodejs"
 
 id roboshop
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then 
    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$LOG_FILE
+   validate $? "creating roboshop system user"
    else
    echo -e "system user already created...$Y skipping $N"
    fi
@@ -53,7 +54,7 @@ validate $? "creating directory"
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>>$LOG_FILE
 validate $? "downloading catalogue"
 
-rm-rf /app/* 
+rm -rf /app/* 
 cd /app
 unzip /tmp/catalogue.zip &>>$LOG_FILE
 validate $? "unzipping catalogue"
