@@ -5,7 +5,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-logs_folder= "/var/log/roboshop-logs"
+logs_folder="/var/log/roboshop-logs"
 script_name=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$logs_folder/$script_name.log"
 mkdir -p $logs_folder
