@@ -61,9 +61,14 @@ mv target/shipping-1.0.jar shipping.jar &>>$script_file
 validate $? "moving and renaming jar files"
 
 cp $script_dir/shipping.service /etc/systemd/system/shipping.service &>>$script_file
+validate $? "copying"
 
 systemctl daemon-reload &>>$script_file
+validate $? "reload shipping"
+
 systemctl enable shipping.service &>>$script_file
+validate $? "enable shipping.service"
+
 systemctl start shipping.service &>>$script_file
 validate $? "starting shipping.service"
 
@@ -85,6 +90,6 @@ validate $? "restarting shipping"
 
 
 END_TIME=$(date +%s)
-TOTAL_TIME=$(( $END_TIME - $START_TIME ))
+TOTAL_TIME=$(( $END_TIME - $starttime ))
 
 echo -e "Script exection completed successfully, $y time taken: $TOTAL_TIME seconds $n" | tee -a $script_file
