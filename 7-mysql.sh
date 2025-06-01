@@ -31,7 +31,7 @@ validate() {
       fi
 }
 
-dnf install mysql-server &>>$script_file
+dnf install mysql-server -y &>>$script_file
 validate $? "installing mysql"
 
 systemctl enable mysqld &>>$script_file
