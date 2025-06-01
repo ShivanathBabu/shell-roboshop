@@ -54,7 +54,7 @@ cd /app
 unzip /tmp/shipping.zip &>>$script_file
 validate $? "unzipping shipping"
 
-mvn celan package &>>$script_file
+mvn clean package &>>$script_file
 validate $? "paccking the shipping application"
 
 mv target/shipping-1.0.jar shipping.jar &>>$script_file
