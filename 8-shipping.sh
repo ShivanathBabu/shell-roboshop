@@ -67,10 +67,10 @@ systemctl daemon-reload &>>$script_file
 validate $? "reload shipping"
 
 systemctl enable shipping &>>$script_file
-validate $? "enable shipping.service"
+validate $? "enable shipping service"
 
 systemctl start shipping &>>$script_file
-validate $? "starting shipping.service"
+validate $? "starting shipping service"
 
 dnf install mysql -y &>>$script_file
 validate $? "installing sql"
