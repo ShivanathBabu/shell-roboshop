@@ -66,8 +66,8 @@ validate $? "copying"
 systemctl daemon-reload &>>$script_file
 validate $? "reload shipping"
 
-systemctl enable shipping &>>$script_file
-validate $? "enable shipping service"
+systemctl enable shipping  &>>$script_file
+VALIDATE $? "Enabling Shipping"
 
 systemctl start shipping &>>$script_file
 validate $? "starting shipping service"
