@@ -47,7 +47,7 @@ validate $? "start nginx"
 rm -rf /usr/share/nginx/html/* &>>$script_file
 validate $? "removing default content"
 
-curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip &>>$LOG_FILE
+curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip &>>$script_file
 validate $? "Downloading frontend"
 
 cd /usr/share/nginx/html
@@ -58,7 +58,7 @@ rm -rf /etc/nginx/nginx.conf &>>$script_file
 validate $? "removing default content"
 
 cp $script_dir/nginx.conf /etc/nginx/nginx.conf &>>$script_file
-validate "copying nginx"
+validate $? "copying nginx"
 
 systemctl restart nginx &>>$script_file
 validate $? "Restarting nginx"
