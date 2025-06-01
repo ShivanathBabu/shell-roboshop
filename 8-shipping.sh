@@ -67,7 +67,7 @@ systemctl daemon-reload &>>$script_file
 validate $? "reload shipping"
 
 systemctl enable shipping  &>>$script_file
-VALIDATE $? "Enabling Shipping"
+validate $? "Enabling Shipping"
 
 systemctl start shipping &>>$script_file
 validate $? "starting shipping service"
