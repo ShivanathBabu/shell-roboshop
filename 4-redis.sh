@@ -40,7 +40,7 @@ validate $? "enable redis"
 dnf install redis -y &>>$script_file
 validate $? "install redis"
 
-sed -i 's/127.0.0.1/0.0.0.0/g' -e '/protected-mode/ c protected-mode no' /etc/redis/redis.conf  &>>$script_file
+sed -i -e 's/127.0.0.1/0.0.0.0/g' -e '/protected-mode/ c protected-mode no' /etc/redis/redis.conf  &>>$script_file
 validate $? "Edited redis.conf"
 
 systemctl enable redis  &>>$script_file
