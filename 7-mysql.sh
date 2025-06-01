@@ -21,6 +21,8 @@ else
    echo -e "$g Running with sudo access $n" | tee -a $script_file
 fi
 
+echo "please enter root password to set up"
+read -s MYSQL_ROOT_PASSWORD
 validate() {
     if [ $1 -eq 0 ]
     then
