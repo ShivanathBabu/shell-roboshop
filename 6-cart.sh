@@ -64,7 +64,7 @@ then
    validate $? "install npm"
 
    cp $script_dir/cart.service /etc/systemd/system/cart.service &>>$script_file
-   validate "copying cart.service"
+   validate $? "copying cart.service"
 
    systemctl daemon-reload &>>$script_file
    systemctl enable cart.service &>>$script_file
