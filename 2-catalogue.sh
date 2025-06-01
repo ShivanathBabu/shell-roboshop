@@ -1,5 +1,5 @@
 #!/bin/bash
-userid=(id -u)
+userid=$(id -u)
 r="\e[31m"
 g="\e[32m"
 y="\e[33m"
@@ -50,7 +50,7 @@ fi
 mkdir -p /app
 validate $? "creating app directory"
 
-curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
+curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>>$script_file
 validate $? "downloading content"
 
 rm -rf /app/*
@@ -64,7 +64,7 @@ validate $? "install npm"
 cp $script_dir/catalogue.service /etc/system/systemd/catalogue.service 
 validate $?  "downloading content"
 
-systemctl daemon-reload &>>$script_file 
+systemctl daemon-reload catalogue.service &>>$script_file 
 systemctl enable catalogue.service &>>$script_file
 systemctl start catalogue.service
 validate $? "starting catalogue"
