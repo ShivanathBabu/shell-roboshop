@@ -61,8 +61,8 @@ validate $? "unzipping catalogue"
 npm install &>>$script_file
 validate $? "install npm"
 
-cp $script_dir/catalogue.service /etc/system/systemd/catalogue.service 
-validate $?  "downloading content"
+cp $script_dir/catalogue.service /etc/systemd/system/catalogue.service 
+validate $?  "copying"
 
 systemctl daemon-reload catalogue.service &>>$script_file 
 systemctl enable catalogue.service &>>$script_file
