@@ -69,7 +69,7 @@ systemctl enable catalogue.service &>>$script_file
 systemctl start catalogue.service
 validate $? "starting catalogue"
 
-cp $script_dir/mongo.repo /etc/yum.repos.d/mongo.repo
+cp $script_dir/mongodb.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-mongosh -y  &>>$script_file
 validate $? "Installing Mongodb clinet"
 
