@@ -44,7 +44,7 @@ id roboshop
 if [ $? -ne 0 ]
 then
 echo -e "$r roboshop not yet installed.. $n $g installing please wait $n"
-useradd --system --home /app --shell sbin/nologin --comment "roboshop user" roboshop &>>$script_file 
+useradd --system --home /app --shell /sbin/nologin --comment "roboshop user" roboshop &>>$script_file 
 validate $? "creating system user"
 else
 echo -e "already created...$y already created $n"  
